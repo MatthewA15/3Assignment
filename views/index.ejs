@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <!-- Identifying the main CSS file -->
+    <link rel='stylesheet' href='/Content/app.css' />
+    <!-- Identifying the Bootstrap CSS file -->
+    <link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.min.css' />
+    <!-- Identifying Font Awesome CSS file -->
+    <link rel='stylesheet' href='/@fortawesome\fontawesome-free/css/all.min.css' />
+    <style>
+      .center-text {
+        display: block;
+        text-align: center;
+        margin-top: 20px; /* This gives some spacing after the list */
+      }
+    </style>
+  </head>
+  <body> <!-- Beginning of the body of the page -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">INFR3120</a>
+        <!-- Button collapsing bar -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Actual navigation bar-->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <!-- Home navigation -->
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/"><i class="fa-solid fa-large fa-house"></i> Home</a>
+            </li>
+            <!-- About navigation -->
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/about"><i class="fa-regular fa-large fa-address-card"></i> About</a>
+            </li>
+            <!-- Projects navigation -->
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/projects"><i class="fa-solid fa-large fa-bars"></i> Projects<a>
+            </li>
+            <!-- Contact Us navigation -->
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/contact"><i class="fa-solid fa-large fa-phone"></i> Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav> <!-- End of the navigation bar -->
+    <h1><%= heading %></h1>
+    <!-- Check current title is 'Home Page' -->
+    <% if (title === 'Home Page') { %>
+      <div id="home">
+        <div class="centered-div">
+          <!-- Welcome message home page -->
+          <p>Welcome to my Project!</p>
+        </div>
+      </div>
+      <!-- Footer home page -->
+      <footer>
+        &copy; Copyright by Matthew <br>
+        matthew.allicock09@gmail.com
+      </footer>
+    <% } %>
+    <!-- Check current title is 'About Me' -->
+    <% if (title === 'About Me') { %>
+      <div class="centered-div">
+        <p>About Matthew</p><br><br>
+      </div>
+      <div class="centered-div">
+        <!-- Video element -->
+        <video id="video" poster="IMG_0668.mp4" controls width="320" height="320" loop preload="auto" autoplay muted>
+          <source src="IMG_0668.mp4" type="video/mp4">
+        </video>
+      </div>
+      <br><br><br>
+      <div class="centered-div">
+        <!-- Play/Pause button for the video -->
+        <button onclick="playPause()">Play/Pause</button>
+        <script>
+          var myVideo=document.getElementById("video");
+          function playPause()
+          {if (myVideo.paused) myVideo.play(); else myVideo.pause();}
+        </script>
+      </div>
+      <!-- Footer About Me page -->
+      <footer>
+        &copy; Copyright by Matthew <br>
+        matthew.allicock09@gmail.com
+      </footer>
+    <% } %>
+    <!-- Check current title is 'Projects' -->
+    <% if (title === 'Projects') { %>
+      <div class="centered-div">
+        <!-- List of projects -->
+        <ul>
+          <li>Calculator</li>
+          <li>LetterCount</li>
+          <li>Payroll</li>
+          <li>SumofDigits</li>
+          <li>Student Grades</li>
+        </ul>
+      </div>
+      <!-- Footer Projects page -->
+      <footer>
+        &copy; Copyright by Matthew <br>
+        matthew.allicock09@gmail.com
+      </footer> 
+    <% } %>
+    <!-- Check current title is 'Contact Us' -->
+    <% if (title === 'Contact Us') { %>
+      <div class="centered-div">
+        <p>Questions, Comments and Queries Below!</p><br><br>
+      </div>
+      <div class="centered-div">
+        <!-- Description for the Contact Me page -->
+        <p>This is the Contact Me page. You can provide your contact information here.</p>
+      </div>
+      <div id="left-coloum" style="margin: auto; width: 50%;" class="center-flexbox" class="center-grid" class="centered-div">
+        <!-- Contact form -->
+        <form 
+        action="mailto:matthew.allicock@ontariotechu.net"
+        enctype="text/plain"
+        method="post"
+        name="form"
+        >
+        <!-- Input email -->
+        <p>
+            <label id="email">Email :</label><br>
+            <input type="email" name="email" size="30" placeholder="Enter Email Here" required>
+        </p>
+        <!--  Input comments area -->
+        <p>
+            <label id="comments">Comments :</label><br>
+            <textarea name="comment" cols="60" rows="8"></textarea>
+        </p>
+        <!-- Input name -->
+        <p>
+            <label id="name">Name :</label><br>
+            <input type="text" name="name" size="40" placeholder="Enter Name Here" required>
+        </p>
+  
+        <!-- Submit button -->
+        <p>
+            <input type="submit" value="Click here to submit the form">
+        </p>
+        </form>
+      </div>
+      <!-- Footer Contact Us -->
+      <footer>
+          &copy; Copyright by Matthew <br>
+          matthew.allicock09@gmail.com
+      </footer>
+    <% } %>
+    <!-- Social links -->
+    <div class="socials" style="text-align: center;">
+      <a href="https://www.linkedin.com/in/matthew-allicock-9026b0233/" target="_blank">LinkedIn
+      <a href="https://github.com/MatthewA15/Assignment-2.git" target="_blank">GitHub</a>
+    </div>
+  </body>
+</html>

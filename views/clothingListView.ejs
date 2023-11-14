@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Head contents (like linking CSS files) -->
+</head>
+<body>
+    <!-- Shared header content -->
+
+    <h1>Clothing Items</h1>
+    <ul>
+        <% items.forEach(function(item) { %>
+            <li>
+                <%= item.name %> - <%= item.category %> - <%= item.size %> - <%= item.color %>
+                <!-- Add links for edit and delete -->
+                <a href="/edit-clothing/<%= item._id %>">Edit</a>
+                <form action="/delete-clothing/<%= item._id %>" method="post">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+
+    <!-- Shared footer content -->
+</body>
+</html>

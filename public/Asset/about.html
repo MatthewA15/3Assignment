@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>About Me Video</title> <!--Title-->
+        <style>
+            .circularimage {border-radius:50%;}
+        </style> 
+        
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+        <!--Navigate-->
+    <body>
+            <nav>
+                <div>
+                    <img class="circularimage" src="profgrad.jpg" alt="Photo Of Myself" width="50" height="50"> <!--Image-->
+                    <a href="index.html">Home</a>
+                    <a href="about.html" >About</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </nav>
+            <!--Video with Play/Pause button-->
+            <div id="about"></div> 
+                <h1>About Me</h1>
+                <video id="video" poster="IMG_0668.mp4" controls width="320" height="320" loop preload="auto" autoplay muted>
+                    <source src="IMG_0668.mp4" type="video/mp4">
+                </video>
+                <br>
+                <button onclick="playPause()">Play/Pause</button>
+                <script>
+                    var myVideo=document.getElementById("video");
+                    function playPause()
+                    {if (myVideo.paused) myVideo.play(); else myVideo.pause();}
+                </script>
+            <!--Copyright & Email-->
+            <footer>
+                &copy; Copyright by Matthew <br>
+                matthew.allicock09@gmail.com
+            </footer>
+    </body>
+</html>

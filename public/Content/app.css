@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+/* Page Style */
+body {
+    background-color: rgba(0, 0, 0, 0.703);
+    background-image: linear-gradient(to top, #007BFF, #A5D8FF); /* Adjusted colors for subtler gradient */
+    font-family: 'Segoe UI';
+    padding: 0px;
+    margin: 0px;
+    height: 100vh;  /* Ensure the body takes the full viewport height */
+}
+
+/* Formatting */
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 0; /* Added padding to top and bottom */
+}
+
+footer {
+    margin-top: 300px;
+    text-align: center;
+    padding: 20px 0; /* Added padding */
+}
+
+/* Using a more specific class instead of general div styling */
+.centered-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.center-text {
+    text-align: center;
+}
+

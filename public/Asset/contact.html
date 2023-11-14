@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Contact</title>
+        <style>
+            .circularimage {border-radius:50%;}
+        </style>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+        <body>
+            <nav>
+                <div>
+                    <img class="circularimage" src="profgrad.jpg" alt="Photo Of Myself" width="50" height="50"> <!--Image-->
+                    <a href="index.html">Home</a>
+                    <a href="about.html" >About</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </nav>
+            <p>Questions, Comments and Queries Below!</p><br>
+            <div id="left-coloum">
+                <form 
+                action="mailto:matthew.allicock@ontariotechu.net"
+                enctype="text/plain"
+                method="post"
+                name="form"
+                >
+                <p>
+                    <label id="email">Email :</label><br>
+                    <input type="email" name="email" size="30" placeholder="Enter Email Here" required>
+                </p>
+                <p>
+                    <label id="comments">Comments :</label><br>
+                    <textarea name="comment" cols="60" rows="8"></textarea>
+                </p>
+                <p>
+                    <label id="name">Name :</label><br>
+                    <input type="text" name="name" size="40" placeholder="Enter Name Here" required>
+                </p>
+        
+                <p>
+                    <input type="submit" value="Click here to submit the form">
+                </p>
+            </form>
+            </div>
+            <footer>
+                &copy; Copyright by Matthew <br>
+                matthew.allicock09@gmail.com
+            </footer>
+        </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Head contents -->
+</head>
+<body>
+    <!-- Shared header content -->
+
+    <h1>Edit Clothing Item</h1>
+    <form action="/edit-clothing/<%= item._id %>" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<%= item.name %>" required>
+
+        <!-- Repeat for other fields like category, size, color -->
+
+        <button type="submit">Update Item</button>
+    </form>
+
+    <!-- Shared footer content -->
+</body>
+</html>
