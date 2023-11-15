@@ -72,28 +72,24 @@ app.on('error', (error) => {
       throw error;
   }
 });
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Home Page',
   heading: 'Home'
  });
 });
-
 /* GET About page. */
 router.get('/about', function(req, res, next) {
   res.render('index', { title: 'About Me',
   heading: 'About'
  });
 });
-
 /* GET Projects page. */
 router.get('/Projects', function(req, res, next) {
   res.render('index', { title: 'Projects',
   heading: 'Projects'
  });
 });
-
 /* GET Contact page. */
 router.get('/Contact', function(req, res, next) {
   res.render('index', { title: 'Contact Us',
