@@ -1,13 +1,6 @@
-#!/usr/bin/env node
 
-/**
- * Module dependencies.
- */
 const mongoose = require('mongoose');
-
-// Replace this URI with your actual MongoDB URI
 const dbURI = 'mongodb://127.0.0.1:27017/Clothings';
-
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
@@ -17,11 +10,8 @@ var app = require('./app');
 var debug = require('debug')('assignment 3:server');
 var express = require('express');
 var router = express.Router();
-
-
 /**
- * Normalize a port into a number, string, or false.
- */
+ * Normalize a port into a number */
 function normalizePort(val) {
   var port = parseInt(val, 10);
 
@@ -37,7 +27,6 @@ function normalizePort(val) {
 
   return false;
 }
-
 const port = normalizePort(process.env.PORT || '4000');
 app.set('port', port);
 
@@ -45,10 +34,8 @@ app.listen(port, () => {
   debug('Listening on port ' + port);
   console.log(`Server running on port ${port}`);
 });
-
 /**
- * Event listener for HTTP server "error" event.
- */
+ * Event listener for HTTP server "error".*/
 app.on('error', (error) => {
   if (error.syscall !== 'listen') {
     throw error;
@@ -57,8 +44,7 @@ app.on('error', (error) => {
   var bind = typeof port === 'string'
     ? 'Pipe ' + port
     : 'Port ' + port;
-
-  // handle specific listen errors with friendly messages
+  // handle specific listen errors
   switch (error.code) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges');
