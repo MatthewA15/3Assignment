@@ -1,21 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Head contents -->
+    <title><%= title %></title>
+    <!-- Identifying the main CSS file -->
+    <link rel='stylesheet' href='/Content/app.css' />
+    <!-- Identifying the Bootstrap CSS file -->
+    <link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.min.css' />
+    <!-- Identifying Font Awesome CSS file -->
+    <link rel='stylesheet' href='/@fortawesome\fontawesome-free/css/all.min.css' />
+    <style>
+      .center-text {
+        display: block;
+        text-align: center;
+        margin-top: 20px; /* This gives some spacing after the list */
+      }
+    </style>
 </head>
 <body>
-    <!-- Shared header content -->
-
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">INFR3120</a>
+          <!-- Button collapsing bar -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Actual navigation bar-->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <!-- Home navigation -->
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/"><i class="fa-solid fa-large fa-house"></i> Home</a>
+              </li>
+              <!-- About navigation -->
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/about"><i class="fa-regular fa-large fa-address-card"></i> About</a>
+              </li>
+              <!-- Projects navigation -->
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/projects"><i class="fa-solid fa-large fa-bars"></i> Projects<a>
+              </li>
+              <!-- Contact Us navigation -->
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/contact"><i class="fa-solid fa-large fa-phone"></i> Contact Us</a>
+              </li>
+              <!--Clothing  -->
+              <li class="nav-item">
+                <a class="nav-link" href="/clothing-items/view-clothing"><i class="fas fa-tshirt"></i> Clothing</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav> <!-- End of the navigation bar -->
     <h1>Add New Clothing Item</h1>
-    <form action="/add-clothing" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-
+    <form action="/clothing-items/add-clothing" method="post">
+        <form action="/clothing-items/add-clothing" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category" required>
+            <label for="size">Size:</label>
+            <input type="text" id="size" name="size" required>
+            <label for="color">Color:</label>
+            <input type="text" id="color" name="color" required>
+            <button type="submit">Add Item</button>
+        </form>
         <!-- Repeat for other fields like category, size, color -->
-
-        <button type="submit">Add Item</button>
     </form>
-
-    <!-- Shared footer content -->
+    <div class="socials" style="text-align: center;">
+        <a href="https://www.linkedin.com/in/matthew-allicock-9026b0233/" target="_blank">LinkedIn
+        <a href="https://github.com/MatthewA15/3Assignment.git" target="_blank">GitHub</a>
+    </div>
 </body>
 </html>

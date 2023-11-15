@@ -3,11 +3,21 @@
 /**
  * Module dependencies.
  */
+const mongoose = require('mongoose');
+
+// Replace this URI with your actual MongoDB URI
+const dbURI = 'mongodb://127.0.0.1:27017/Clothings';
+
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
+
 
 var app = require('./app');
-var debug = require('debug')('assignment 2:server');
+var debug = require('debug')('assignment 3:server');
 var express = require('express');
 var router = express.Router();
+
 
 /**
  * Normalize a port into a number, string, or false.
@@ -91,4 +101,4 @@ router.get('/Contact', function(req, res, next) {
  });
 });
 
-module.exports = router;
+

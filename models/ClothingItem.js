@@ -5,6 +5,7 @@ const clothingItemSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  name: String,
   category: String,
   size: String,
   color: String,

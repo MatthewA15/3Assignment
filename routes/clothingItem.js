@@ -1,67 +1,108 @@
 var express = require('express');
 var router = express.Router();
-const ClothingItem = require('../models/ClothingItem');
+const ClothingItem = require('../models/ClothingItem'); // ClothingItem model
 
-// POST route for adding a new clothing item (Create)
-router.post('/add-clothing', async (req, res) => {
+// POST route clothnig (Create operation)
+router.post('/add-clothing', async (req, res, next) => {
   try {
+    // Creating a new ClothingItem
     const newItem = new ClothingItem({
       name: req.body.name,
       category: req.body.category,
       size: req.body.size,
       color: req.body.color,
-      // purchaseDate will be set to default
     });
 
+    // Saving the new item to the database
     await newItem.save();
-    res.redirect('/some-success-page'); // Redirect to a success page or home page
+    // Redirect to the clothing list
+    res.redirect('/clothing-items/view-clothing');
   } catch (error) {
+    // Handling errors and sending an error message
     console.error(error);
-    res.status(500).send('Error saving the clothing item');
+    res.status(500).send('Error adding the clothing item: ' + error.message);
   }
 });
 
-// GET route for displaying clothing items (Read)
+// GET route for displaying clothing items (Read operation)
 router.get('/view-clothing', async (req, res) => {
   try {
+    // Retrieving all clothing items from the database
     const items = await ClothingItem.find();
-    res.render('clothingListView', { items }); // Render a view with the items
+    // Rendering the clothing list view 
+    res.render('clothingListView', { items, title: 'Clothing Items' });
   } catch (error) {
+    // Handle errors and sending an error message
     console.error(error);
-    res.status(500).send('Error retrieving clothing items');
+    res.status(500).send('Error retrieving clothing items: ' + error.message);
   }
 });
+// GET route for showing the add clothing item form
+router.get('/add-clothing', (req, res, next) => {
+  // Render new clothing item
+  res.render('addClothingView', { title: 'Add New Clothing Item' });
+});
 
-// GET route for showing the edit form (Update - Part 1)
+// GET route for showing the edit form
 router.get('/edit-clothing/:id', async (req, res) => {
   try {
+    // Finding a specific clothing item by its ID
     const item = await ClothingItem.findById(req.params.id);
-    res.render('editClothingView', { item }); // Render a view with the item data for editing
+    // Rendering the edit view
+    res.render('editClothingView', { item, title: 'Edit Clothing Item' });
   } catch (error) {
+    // Handle errors and sending an error message
     console.error(error);
-    res.status(500).send('Error finding the item');
+    res.status(500).send('Error finding the item: ' + error.message);
   }
 });
-
-// POST route for updating a clothing item (Update - Part 2)
+// POST route for updating a clothing item
 router.post('/edit-clothing/:id', async (req, res) => {
   try {
+    // Update the database with new data
     await ClothingItem.findByIdAndUpdate(req.params.id, req.body);
-    res.redirect('/some-success-page'); // Redirect after successful update
+    // Redirect to clothing list page upon successful update
+    res.redirect('/clothing-items/view-clothing');
   } catch (error) {
+    // Handle error message
     console.error(error);
-    res.status(500).send('Error updating the item');
+    res.status(500).send('Error updating the item: ' + error.message);
   }
 });
 
-// POST route for deleting a clothing item (Delete)
-router.post('/delete-clothing/:id', async (req, res) => {
+// POST route of a clothing item
+router.post('/delete-clothing/:id', function(req, res) {
+  const id = req.params.id; // Extracting the item ID from the URL
+  ClothingItem.findByIdAndDelete(id)
+    .then(() => {
+      // Handle successful deletion
+      res.redirect('/clothing-items/view-clothing'); // Redirecting after deletion
+    })
+    .catch(err => {
+      // Handle errors during deletion
+      console.error('Error deleting the item:', err);
+      res.status(500).send('Error deleting the item');
+    });
+});
+// POST route of a clothing item
+router.post('/update-clothing/:id', async (req, res) => {
   try {
-    await ClothingItem.findByIdAndRemove(req.params.id);
-    res.redirect('/some-success-page'); // Redirect after successful deletion
+      const id = req.params.id; // Extract the item ID
+      const updatedData = {
+          // Extracting data
+          name: req.body.name,
+          category: req.body.category,
+          size: req.body.size,
+          color: req.body.color
+      };
+      // Updating the database with the new data
+      await ClothingItem.findByIdAndUpdate(id, updatedData, { new: true });
+      // Redirect to the /view-clothing
+      res.redirect('/clothing-items/view-clothing');
   } catch (error) {
-    console.error(error);
-    res.status(500).send('Error deleting the item');
+      // Handle errors
+      console.error('Error updating the item:', error);
+      res.status(500).send('Error updating the item');
   }
 });
 

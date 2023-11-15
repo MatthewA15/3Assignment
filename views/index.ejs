@@ -43,6 +43,10 @@
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/contact"><i class="fa-solid fa-large fa-phone"></i> Contact Us</a>
             </li>
+            <!--Clothing  -->
+            <li class="nav-item">
+              <a class="nav-link" href="/clothing-items/view-clothing"><i class="fas fa-tshirt"></i> Clothing</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -152,10 +156,62 @@
           matthew.allicock09@gmail.com
       </footer>
     <% } %>
+    <% if (title === 'Clothing Items') { %>
+      <div class="centered-div"></div>
+      <h1>Clothing Items</h1>
+      <form action="/add-clothing" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" required>
+        <label for="size">Size:</label>
+        <input type="text" id="size" name="size" required>
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="color" required>
+        <button type="submit">Add Item</button>
+    </form>
+    <ul>
+        <% items.forEach(function(item) { %>
+            <li>
+                <%= item.name %> - <%= item.category %> - <%= item.size %> - <%= item.color %>
+                <!-- Add links for edit and delete -->
+                <a href="/edit-clothing/<%= item._id %>">Edit</a>
+                <form action="/delete-clothing/<%= item._id %>" method="post">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+    <% } %>
+    <% if (title === 'Add New Clothing Item') { %>
+      <div class="centered-div"></div>
+      <h1>Add New Clothing Item</h1>
+    <form action="/add-clothing" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <!-- Repeat for other fields like category, size, color -->
+
+        <button type="submit">Add Item</button>
+    </form>
+
+    <% } %>
+    <% if (title === 'Edit Clothing Item') { %>
+      <div class="centered-div"></div>
+      <h1>Edit Clothing Item</h1>
+    <form action="/edit-clothing/<%= item._id %>" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<%= item.name %>" required>
+
+        <!-- Repeat for other fields like category, size, color -->
+
+        <button type="submit">Update Item</button>
+    </form>
+    <% } %>
     <!-- Social links -->
     <div class="socials" style="text-align: center;">
       <a href="https://www.linkedin.com/in/matthew-allicock-9026b0233/" target="_blank">LinkedIn
-      <a href="https://github.com/MatthewA15/Assignment-2.git" target="_blank">GitHub</a>
+      <a href="https://github.com/MatthewA15/3Assignment.git" target="_blank">GitHub</a>
     </div>
   </body>
 </html>
