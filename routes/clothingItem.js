@@ -71,7 +71,7 @@ router.post('/edit-clothing/:id', async (req, res) => {
 });
 
 // POST route of a clothing item
-router.delete('/delete-clothing/:id', function(req, res) {
+router.post('/delete-clothing/:id', function(req, res) {
   const id = req.params.id; // Extracting the item ID from the URL
   ClothingItem.findByIdAndDelete(id)
     .then(() => {
