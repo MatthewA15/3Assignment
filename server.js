@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-const dbURI = 'mongodb://127.0.0.1:27017/Clothings';
+const dbURI = 'mongodb+srv://matthewallicock:ABC123ABC123@cluster0.ln0s9ke.mongodb.net/Clothings?retryWrites=true&w=majority';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
@@ -44,7 +44,7 @@ app.on('error', (error) => {
   var bind = typeof port === 'string'
     ? 'Pipe ' + port
     : 'Port ' + port;
-  // handle specific listen errors
+  // handle specific listen errors 
   switch (error.code) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges');
